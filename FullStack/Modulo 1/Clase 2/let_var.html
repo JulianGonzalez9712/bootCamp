@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uso de Let y Var (ámbito -scope- de la definición)</title>
+
+</head>
+<body>
+<div >
+    <p id="resultado"></p><p id="resultado2"></p>
+
+</div>
+<script>
+
+    document.getElementById('resultado2').innerHTML="Este es el mensaje"+" esto ya 'no' hace parte del mensaje";
+    document.getElementById('resultado').innerHTML="<p style='color:red'>Hola</p>"
+    let nombre="'Julian'"
+    document.getElementById('resultado').innerHTML=`<p style='color:red'>Hola ${nombre}</p>`
+
+
+
+</script>
+</body>
+</html>
