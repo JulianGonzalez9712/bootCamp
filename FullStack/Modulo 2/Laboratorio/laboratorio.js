@@ -37,8 +37,8 @@ class LinkedList {
         this.head = null;
     }
 
-    // Método para insertar un nuevo nodo al final de la lista
-    insertLast(tarea) {
+    // Método para insertar un nueva tarea al final de la lista
+    agregarFinal(tarea) {
         let newTarea = new Tareas(tarea);
         if (!this.head) {
             this.head = newTarea;
@@ -52,9 +52,9 @@ class LinkedList {
     }
 
     // Método para imprimir los elementos de la lista enlazada
-    refreshList(item=null) {
+    actualizarLista(item=null) {
         if (item){
-            ll.insertLast(item);
+            nuevaTarea.agregarFinal(item);
         }
         let current = this.head;
         let output = '';
@@ -63,12 +63,12 @@ class LinkedList {
             current = current.next;
         }
         output += 'null';
-        document.getElementById('output-linkedlist').textContent = output;
+        document.getElementById('salida').textContent = output;
     }
 }
 
 // Ejemplo de uso de la lista enlazada
-let ll = new LinkedList();
+let nuevaTarea = new LinkedList();
 
 
 // class Tarea {
