@@ -60,70 +60,100 @@ class ListaEnlazada {
         }
     }
 
-     //Método para eliminar tarea de lista
-     eliminarTarea (id) {
-        if(!this.head) return null; //Lista vacía
-
-        if(this.head.tarea.id == id) { //Si la tarea esta en la cabeza
-            this.head = this.head.next;
-            return;
-        }
-
-        let actual = this.head;
-        while (actual.next) {
-            if(actual.next.tarea.id === id) { //Encontrar y eliminar
-                actual.next = actual.next.next;
-                return;
-            }
-            actual = actual.next;
-        }
-    }
-
-
-
-
-    // mostrarLista(item=null) {
-    //     if (item){
-    //         nuevaTarea.agregarFinal(item);
-    //     }
-    //     let actual = this.head;
-    //     let output = '';
-    //     while (actual !== null) {
-    //         output += `${actual.tarea} -> `;
-    //         actual = actual.next;
-    //     }
-    //     output += 'null';
-    //     console.log(output);
-    // }
-
-    //  //Método para eliminar tarea de lista
-    //  eliminarTarea (id) {
-    //     if(!this.head) return null; //Lista vacía
-
-    //     if(this.head.tarea.id == id) { //Si la tarea esta en la cabeza
-    //         this.head = this.head.next;
-    //         return;
-    //     }
-
-    //     let actual = this.head;
-    //     while (actual.next) {
-    //         if(actual.next.tarea.id === id) { //Encontrar y eliminar
-    //             actual.next = actual.next.next;
-    //             return;
-    //         }
-    //         actual = actual.next;
-    //     }
-    // }
-
 
 }
 
 
-let nuevaTarea = new ListaEnlazada();
-nuevaTarea.agregarFinal("Correr");
+class Cola{
+    constructor() {
+        this.tareas = []; //Array donde están las tareas
+    }
+
+    //Método agregar tarea
+    agregarCola(tarea) {
+        this.tareas.push(tarea);
+    }
+
+    // Método eliminar y retornar la primera tarea de Cola
+    quitarCola() {
+        return this.tareas.shift();
+    }
+
+    //Método para mostrar tareas
+    mostrarTareas(){
+        this.tareas.forEach(tarea => console.log(tarea));
+    }
+
+}
+
+//Clase PiLa para gestionar tareas ya hechas
+class Pila {
+    constructor(){
+        this.tareas = []; //Array para almacenar
+    }
+
+    //Método para agregar tarea a pila
+    apilar(tarea) {
+        this.tareas.push(tarea);
+    }
+
+    //Método que elimina y retorna la última tarea
+    desapilar() {
+        return this.tareas.pop();
+    }
+
+    //Método para mostrar todas las tareas en pila
+    mostrarTareas() {
+        this.tareas.forEach(tarea => console.log(tarea));
+    }
+}
 
 
-console.log(nuevaTarea);
-nuevaTarea.mostrarTareas();
+class NodoArbol {
+    constructor(tarea) {
+        this.tarea = tarea;
+        this.izquierdo = null;
+        this.derecho = null;
+    }
+}
+
+class BusquedaArbol {
+    constructor() {
+        this.raiz = null;
+    }
+    
+    insertarTarea(tarea) {
+        const nuevoNodo = new NodoArbol(tarea);
+
+        if (this.raiz === null) {
+            this.raiz = nuevoNodo;
+            return;
+        }
+
+        let actual = this.raiz;
+        while (true) {
+            if (tarea.prioridad < actual.tarea.prioridad) {
+                if (actual.izquierdo === null) {
+                    actual.izquierdo = nuevoNodo;
+                    return;
+                }
+                actual = actual.izquierdo;
+            } else {
+                if (actual.derecho === null) {
+                    actual.derecho = nuevoNodo;
+                    return;
+                }
+                actual = actual.derecho;
+            }
+        }
+
+    }
+
+
+
+    
+}
+
+
 
 
